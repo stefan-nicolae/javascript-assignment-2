@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    padding-bottom: 10px;
+    background-color: rgb(26, 26, 26);
+    border-radius: 10px;
+    margin-top: 30vh;
+}
+
+main button {
+    border-radius: 5px;
+    padding: 3px 0;
+    border: 0;
+    background-color: rgb(83, 90, 185);
+    color:white;
+    cursor: pointer;
+}
+
+main button.colored-button {
+    background-color: rgb(131, 55, 244);
+}
+
+main button.colored-button:hover {
+    background-color: rgb(175, 137, 232);
+}
+
+
+main button:hover {
+    background-color: rgb(105, 114, 232);
+}
+
+main .top {
+    width: 100%;
+    display: flex;
+    margin-bottom: 10px;
+}
+
+main .display {
+    flex: 1;
+    background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+    padding: 3px 3px;
+}
+
+main .top button {
+    width: 30px;
+    margin-left: 5px;
+}
+
+main .row {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+main .row button {
+    flex: 1;
+    margin-left: 5px;
+}
+main .row button:first-of-type {
+    margin-left: 0;
+}
+main .row button:last-of-type {
+    width: 30px;
+    flex: unset;
+}
+
