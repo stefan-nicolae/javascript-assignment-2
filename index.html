@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
 </head>
 <body>
+    <header>
+        <h1>Welcome to our calculator app</h1>
+        <h2>Press C to clear</h2>
+        <span>You can use your keyboard. Esc to clear, Enter to calculate.</span>
+    </header>
     <main>
         <div class="top">
             <div class="display"></div>
-            <button class="colored-button">C</button>
+            <button id="back-button"><iconify-icon icon="material-symbols:keyboard-backspace"></iconify-icon></button>
+            <button id="clear-button" class="colored-button">C</button>
         </div>
         <div class="buttons">
             <div class="row">
@@ -35,11 +42,11 @@
             <div class="row">
                 <button>.</button>
                 <button>0</button>
-                <button class="operator colored-button">=</button>
+                <button class="equal colored-button">=</button>
                 <button class="operator">*</button>
             </div>
         </div>
     </main>
+    <script src="./main.js"></script>
 </body>
-<script src="./main.js"></script>
 </html>
