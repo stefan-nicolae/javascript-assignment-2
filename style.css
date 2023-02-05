@@ -10,17 +10,26 @@ header {
     font-family: 'Amiri', serif;
     text-align: center;
     margin-top: 20px;
+    font-size: 1.5rem;
 }
 
 main {
     width: 300px;
     margin: auto;
     padding: 20px;
-    padding-bottom: 10px;
+    /* padding-bottom: 10px; */
     background-color: rgb(26, 26, 26);
     border-radius: 10px;
     margin-top: 30vh;
     scale: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+main .buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
 }
 
 main button {
@@ -50,6 +59,7 @@ main .top {
     display: flex;
     margin-bottom: 10px;
     height: 30px;
+    display: flex;
 }
 
 main .display {
@@ -66,6 +76,10 @@ main .top button {
     margin-left: 5px;
 }
 
+.top-buttons {
+    display: flex;
+}
+
 #back-button {
     display: flex;
     justify-content: center;
@@ -75,7 +89,7 @@ main .top button {
 main .row {
     display: flex;
     width: 100%;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
 
 main .row button {
@@ -90,3 +104,57 @@ main .row button:last-of-type {
     flex: unset;
 }
 
+@media only screen and (max-width: 600px) {
+    main {
+        width: 150px;
+        margin: auto;
+        padding: 1.5rem 0.5rem;
+        padding-bottom: 15px;
+        border-radius: 10px;
+        margin-top: 20vh;
+    }
+
+    main .top {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:end;
+        align-content: space-around;
+        margin-bottom: 1rem;
+        gap: 0.3rem;
+        
+    }
+
+    main .top .display {
+        display: flex;
+        overflow: scroll;
+    }
+
+    .top-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+        margin: 0rem;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        align-content: space-around;
+        gap: 1rem;
+    }
+
+    h2{
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    span {
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 0px 30px;
+    }
+}

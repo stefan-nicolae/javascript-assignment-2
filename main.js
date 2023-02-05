@@ -64,7 +64,7 @@ function writeOperator(newOperator) {
 }
 
 function calculate() {
-    if(value1 && currentValue && !isNaN(parseFloat(currentValue))) {
+    if(currentValue && !isNaN(parseFloat(currentValue))) {
         if(!value2) value2 = parseFloat(currentValue) 
         console.log("value1 " + value1)
         console.log("value2 " + value2)
