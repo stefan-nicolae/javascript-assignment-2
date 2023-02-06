@@ -69,6 +69,7 @@ main .display {
     padding: 3px 3px;
     display: flex;
     align-items: center;
+    overflow-x: hidden;
 }
 
 main .top button {
