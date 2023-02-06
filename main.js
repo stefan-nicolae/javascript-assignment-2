@@ -1,7 +1,6 @@
 let currentValue = "",
 value1, value2, operator,
-isResult = false,
-operatorWritten = false
+isResult = false
 
 function add (a, b) {
     return parseFloat(a) + parseFloat(b);
@@ -33,10 +32,8 @@ function operate (operator, a, b) {
 }
 
 function writeNumberAndDot(value) {
-    console.log(operatorWritten)
     if(isResult) clear()
-    let negative = false 
-    if(currentValue === "-") negative = true;
+    //if there is an operator in the currentValue, clear
     if(isNaN(parseFloat(currentValue))) {
         updateCurrentValue("")
     }     
@@ -48,32 +45,27 @@ function writeNumberAndDot(value) {
         }
     }
     let newValue = currentValue + value
-    updateCurrentValue((negative ? "-" : "") + newValue)
-    operatorWritten = false
+        updateCurrentValue(newValue)
 }
 
 function writeOperator(newOperator) {
-    if(currentValue !== "" && !operatorWritten) {
-        isResult=false
-        if(!operator) {
-            operator = newOperator
-            value1 = parseFloat(currentValue)
-            updateCurrentValue(operator)
-        } else {
-            //CHAINING
-            value1 = operate(operator, value1, parseFloat(currentValue))
-            operator = newOperator
-            updateCurrentValue(operator)
-        }
-        operatorWritten = true
+    isResult=false
+    //operator is empty
+    if(!operator) {
+        operator = newOperator
+        value1 = parseFloat(currentValue)
+        updateCurrentValue(operator)
     } else {
-        if(newOperator === "-") updateCurrentValue("-")
+        //we are chaining
+        value1 = operate(operator, value1, parseFloat(currentValue))
+        operator = newOperator
+        updateCurrentValue(operator)
     }
 }
 
 function calculate() {
-    if(currentValue !== "" && !isNaN(parseFloat(currentValue))) {
-        if(!value2 && value2 !== 0) value2 = parseFloat(currentValue) 
+    if(currentValue && !isNaN(parseFloat(currentValue))) {
+        if(!value2) value2 = parseFloat(currentValue) 
         console.log("value1 " + value1)
         console.log("value2 " + value2)
         if(operator === "/" && value2 === 0) {
@@ -83,6 +75,9 @@ function calculate() {
         updateCurrentValue(operate(operator, value1, value2))
         value1 = parseFloat(currentValue) 
         isResult = true 
+        //if this is true and numbers or dot or backspace are pressed,
+        //then clear (clear makes it false again)
+        //if operators are pressed then isResult=false
     }
 }
 
@@ -99,11 +94,14 @@ function clear() {
     operator = ""
 }
 
+//updateCurrentValue() to update the info
+//currentValue to get the info
 function updateCurrentValue(value) {
     currentValue = value
     document.querySelector(".top .display").textContent = value
 }
 
+//clear button
 document.querySelector("#clear-button").addEventListener("click", e => {
     clear()
 })
@@ -113,30 +111,37 @@ document.querySelector("#back-button").addEventListener("click", e => {
 })
 
 document.querySelectorAll(".row button").forEach(button => {
+    //numbers; adds a number at the end of the currentValue
     if(!button.className.includes("operator") && !button.className.includes("equal")) {
         button.addEventListener("click", e => {
             writeNumberAndDot(button.textContent)
         })
     }
+    //equal
     else if(button.className.includes("equal")) {
         button.addEventListener("click", e => {
             calculate()
         })
     }
+    //operators
     else {
         button.addEventListener("click", e => {
+            //e.currentTarget.textContent
             writeOperator(e.currentTarget.textContent)
         })
     }
 })
 
 document.addEventListener("keydown", e => {
+    //numbers and dots
     if(!isNaN(parseFloat(e.key)) || e.key === ".") {
         writeNumberAndDot(e.key)
     }
+    //operators
     else if(e.key === "+" || e.key === "-" || e.key === "/" || e.key === "*") {
         writeOperator(e.key)
     }
+    //enter
     else if(e.key === "Enter") {
         calculate()
     }
@@ -148,3 +153,4 @@ document.addEventListener("keydown", e => {
     }
 })
 
+//backspace shouldnt clear the result
